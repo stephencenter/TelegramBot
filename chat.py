@@ -61,8 +61,8 @@ async def get_gpt_response(user_command: UserCommand) -> str:
     attempt_counter = 0
     re_attempt_text = "Failed to get GPT response, trying again..."
     while attempt_counter < MAX_GPT_ATTEMPTS:
-        gpt_completion = await openai_client.chat.completions.create(
-            messages=messages,  # pyright: ignore[reportArgumentType]
+        gpt_completion = await openai_client.chat.completions.create(  # pyrefly:ignore
+            messages=messages,
             model=config.chat.gptmodel.value,
             temperature=config.chat.gpttemp.value,
             max_completion_tokens=config.chat.gptmaxtokens.value,
@@ -300,7 +300,7 @@ async def load_message_list(chat_files: list[Path]) -> list[str]:
 
 
 def build_markov_chain(message_list: list[str]) -> dict[str, dict[str, float]]:
-    markov_chain: dict[str, dict[str, float]] = collections.defaultdict(lambda: collections.defaultdict(int))
+    markov_chain: dict[str, dict[str, float]] = collections.defaultdict(lambda: collections.defaultdict(float))
     for message in message_list:
         token_list = [clean_token(token) for token in message.split()]
 

@@ -8,8 +8,7 @@ from __future__ import annotations  # Python 3.14 feature for deferred annotatio
 
 import functools
 import random
-import types
-from collections.abc import Callable
+from collections.abc import Awaitable, Callable, Coroutine
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -569,15 +568,15 @@ class MissingUpdateInfoError(ValueError):
 # TYPE ANNOTATIONS
 # ==========================
 # region
-CommandAnn = Callable[[UserCommand], types.CoroutineType[Any, Any, CommandResponse]]
+CommandAnn = Callable[[UserCommand], Awaitable[CommandResponse]]
 TelegramBotAnn = TelegramBot[Any, Any, Any, Any, Any, Any]
 DiscordBotAnn = DiscordBot
 AnyBotAnn = TelegramBotAnn | DiscordBotAnn
 TelegramContextAnn = TelegramContext[Any, Any, Any, Any]
 DiscordContextAnn = DiscordContext[Any]
 AnyContextAnn = TelegramContextAnn | DiscordContextAnn
-TelegramFuncAnn = Callable[[TelegramUpdate, TelegramContextAnn], types.CoroutineType[Any, Any, None]]
-DiscordFuncAnn = Callable[[DiscordContextAnn], types.CoroutineType[Any, Any, None]]
+TelegramFuncAnn = Callable[[TelegramUpdate, TelegramContextAnn], Coroutine[Any, Any, None]]
+DiscordFuncAnn = Callable[[DiscordContextAnn], Coroutine[Any, Any, None]]
 # endregion
 
 
@@ -596,7 +595,7 @@ def requireadmin(function: CommandAnn) -> CommandAnn:
 
         return await function(user_command)
 
-    admin_wrapper.requireadmin = True  # pyright: ignore[reportAttributeAccessIssue]
+    admin_wrapper.requireadmin = True  # pyrefly:ignore
     return admin_wrapper
 
 
@@ -614,7 +613,7 @@ def requiresuper(function: CommandAnn) -> CommandAnn:
 
         return await function(user_command)
 
-    superadmin_wrapper.requiresuper = True  # pyright: ignore[reportAttributeAccessIssue]
+    superadmin_wrapper.requiresuper = True  # pyrefly:ignore
     return superadmin_wrapper
 
 

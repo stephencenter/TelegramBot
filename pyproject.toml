@@ -1,12 +1,12 @@
 [project]
 name = "FailsafeBot"
-version = "v1.1.20"
+version = "v1.1.21"
 description = "Telegram and Discord chat bot"
 requires-python = ">=3.13"
 dependencies = [
     "aiofiles>=24.1.0",
     "aiohttp>=3.11.16",
-    "discord-py>=2.6.0",
+    "discord-py>=2.7.0",
     "elevenlabs>=2.4.0",
     "filetype>=1.2.0",
     "ffmpeg-python>=0.2.0",
@@ -24,7 +24,10 @@ dependencies = [
     "yt-dlp>=2025.3.31",
     "tomli-w>=1.2.0",
     "aiopath>=0.7.7",
+    "davey>=0.1.4",
 ]
 
 [tool.uv]
 link-mode = "copy"
+
+[tool.pyrefly]

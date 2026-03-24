@@ -87,7 +87,7 @@ def roll_dice(num_dice: int, num_sides: int, modifier: int) -> int:
 
 def get_dnd_statroll() -> dict[str, int]:
     # Based on D&D 5e
-    statroll = {
+    statroll: dict[str, int] = {
         "STR": 0,
         "DEX": 0,
         "CON": 0,

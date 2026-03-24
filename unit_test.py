@@ -29,7 +29,7 @@ class FakeTelegramApplication:
     """Dummy Telegram Application class for unit testing."""
 
     @property
-    def __class__(self) -> type:  # type: ignore
+    def __class__(self) -> type:
         return TelegramBotType
 
 
@@ -40,7 +40,7 @@ class FakeTelegramUpdate:
     message: FakeTelegramMessage | None
 
     @property
-    def __class__(self) -> type:  # type: ignore
+    def __class__(self) -> type:
         return TelegramUpdateType
 
 
@@ -48,7 +48,7 @@ class FakeTelegramContext:
     """Dummy Telegram Context class for unit testing."""
 
     @property
-    def __class__(self) -> type:  # type: ignore
+    def __class__(self) -> type:
         return TelegramContextType
 
 
@@ -87,7 +87,7 @@ class FakeDiscordBot:
     """Dummy Discord Bot class for unit testing."""
 
     @property
-    def __class__(self) -> type:  # type: ignore
+    def __class__(self) -> type:
         return DiscordBotType
 
 
@@ -101,7 +101,7 @@ class FakeDiscordContext:
     channel: FakeDiscordChannel | None
 
     @property
-    def __class__(self) -> type:  # type: ignore
+    def __class__(self) -> type:
         return DiscordContextType
 
 
